@@ -8,8 +8,9 @@ Issues found:
       - The endpoint returns error 500. 
     Evidence: https://prnt.sc/8Blgmdu8vS5Y 
 
-    The remove movie endpoint doesn't work if the movie ID is integer
+ The remove movie endpoint doesn't work if the movie ID is integer
       Expected Behavior
         - The movie should be removed after click Remove button. 
       Observed Behavior
         - The endpoint allow to create movie using int values. But the delete button doesn't remove the movie. 
+   
