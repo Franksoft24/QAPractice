@@ -23,3 +23,28 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+Cypress.Commands.add('post', (apiUrl, endpoint, data) => {
+    cy.request({
+        method: 'POST', //Method POST 
+        url: apiUrl+"/"+endpoint, //API endpoint
+        body: data, //Request body
+        failOnStatusCode: false //To handle negative test cases
+    })
+});
+
+Cypress.Commands.add('getReq', (apiUrl, endpoint, param) => {
+    cy.request({
+        method: 'GET', //Method GET 
+        url: apiUrl+"/"+endpoint, //API endpoint
+        qs: param, //Query parameters
+        failOnStatusCode: false //To handle negative test cases
+    })
+});
+
+Cypress.Commands.add('delete', (apiUrl, endpoint, param) => {
+    cy.request({
+        method: 'Delete', //Method Delete 
+        url: apiUrl+"/"+endpoint+"/"+param, //API endpoint
+        failOnStatusCode: false //To handle negative test cases
+    })
+});
