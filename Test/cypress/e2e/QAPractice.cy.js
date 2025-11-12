@@ -56,4 +56,18 @@ describe('QA Practice', () => {
     cy.get("h4").contains(movie).should("not.exist") //Verify that the movie has been removed from favorites
   });
 
+  it("Click load more button to load additional movies", () => {
+    const initialMovieCount = 10; //Assuming the initial load shows 10 movies
+    const movie = testMovies[0];
+    cy.log("Movie selected: "+movie); //Log the movie being processed due the amount of movies displayed
+    cy.get('input[placeholder="Search movies..."]').clear().type(movie) //Type a common letter to get multiple results
+    cy.get('button[type="submit"]').click() //Click the search button
+    //I decided to user H3 elements to count the movies due they are used for movie titles
+    cy.get("h3").parent().parent().should("have.length", initialMovieCount) //Verify initial number of movies displayed
+    cy.screenshot('Evidences/Load_More/Before_Load_More_test') //Take screenshot before loading more
+    cy.get("button").contains("Load More").click() //Click the Load More button
+    cy.get("h3").parent().parent().should("have.length.greaterThan", initialMovieCount) //Verify more movies are loaded
+    cy.screenshot('Evidences/Load_More/After_Load_More_test') //Take screenshot after loading more
+  });
+
 })
