@@ -2,8 +2,6 @@ import FunctionalTestData from '../fixtures/FunctionalTestData.json';
 
 const testMovies = FunctionalTestData.List_of_movies_to_search;
 
-var backendUrl = 'http://localhost:3000';
-
 describe('QA Practice', () => {
   // Define the movie title to be used in this tests
   beforeEach(() => {
