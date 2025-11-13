@@ -6,56 +6,86 @@ A comprehensive QA testing suite for the Movie Search Platform using Cypress for
 ## Issues found: 
 
   
-### I01 - System Testing | Search Endpoint Returns 500 Error   
-**Severity:** High | **Risk:** High
+### I01 - System testing | The load more button shouldn't display when there is no more movies to show
+**Severity:** Low | **Risk:** Low
 
 
 **Expected Behavior:**
 
-- The endpoint should return the desired movie by the title typed on the search box. 
-- expected call request: url/movies/?apikey=any&s=testMovie&page=1
+- The load more button shouldn't display or be active when there is no more movie to show.  
 
 **Observed Behavior:**
-- The request is bad formatted. And it gives a 401 error in the logs.  
-- The endpoint returns error 500. 
-- Actual request: url/movies/search?q=test&page=1
+- The load more button is displayed when there is no more movie to show.
 
-***Steps to replicate:***
+**Steps to replicate:**
 - Open the main URL. http://localhost:3001
-- Type in the search bar a movie name. (Be sure the movie is added in the database)
-- Click search. 
+- Type in the search bar: Gambito
+- Click search.
+- There is only 1 movie displayed, but load more button is present 
 
-**Evidence:** [Screenshot 1](https://prnt.sc/8Blgmdu8vS5Y) [Screenshot 2](https://prnt.sc/dJIxYo4PrBqd)
+**Evidence:** [Screenshot](https://prnt.sc/gWmD1WznV16X)
 
 ---
 
-### I02 - System Testing | The remove movie endpoint doesn't work if the movie ID is integer:
+### I02 - API Testing | Post endpoint doesn't validate the correct ID format 
+**Severity:** High | **Risk:** High 
+
+**Expected Behavior:**
+  - The app should validate that the data provided by the user meets the expected data type.
+
+**Observed Behavior:**
+  - The endpoint allow to create movie only using int values as the imdbID.
+
+**Steps to reproduce:**
+  - Create a new movie via API and assign a numeric imdbID only
+
+**Evidence:** [Screenshot](https://prnt.sc/Ngf2M3iDGSxv)      
+
+---
+
+### I03 - System Testing | Remove button doesn't remove a movie with a numeric ID
 **Severity:** High | **Risk:** Low
 
-***Expected Behavior***
-  - The movie should be removed after click Remove button. 
+**Expected Behavior:**
+- Remove button shuld remove the movie selected. 
 
-***Observed Behavior***
-  - The endpoint allow to create movie using int values. But the delete button doesn't remove the movie. 
-***Steps to reproduce:***
-  - Create a new movie via Postman and assign a numeric imdbID
-  - Open the APP http://localhost:3001
-  - Click remove button on the recently created movie. It won't be removed. 
+**Observed Behavior:**
+- If the ID is numeric format the remove button doesn't work. 
 
-**Evidence:** [Screenshot 1](https://prnt.sc/8Blgmdu8vS5Y) | [Screenshot 2](https://prnt.sc/dJIxYo4PrBqd)      
+**Steps to reproduce:**
+- Create a new movie via API with a numeric **imdbID**. 
+- Navigate to http://localhost:3001
+- Click remove button on the movie created with the numeric imdbID. 
+
+**Evidence:** [Screenshot](https://prnt.sc/-VwufjyA_O10)
 
 ---
 
-### I03 - API Testing | Search Endpoint Returns Empty Movie Object
-**Severity:** High | **Risk:** High
+### I04 - System Testing - Loading error seen when the movie comes without image
+**Severity:** Low | **Risk:** Low
 
 **Expected Behavior:**
-- Request to `/movies/search?apikey=demo&s=movietitle&page=1` should return the movie data
+- Navigate to http://localhots:3001
+- Search for movie: Gambito. (The movie doesn't have an image)
 
 **Observed Behavior:**
-- The endpoint returns an empty object
+- 404 error spam the console looking for a placeholder image in the code. Can we add a placeholde.jpg
 
-**Evidence:** [Screenshot](https://prnt.sc/kJc9nStzpEyW)
+**Evidence:** [Screenshot](https://prnt.sc/rDxx8AohNFRl)
+
+---
+
+### I05 - System Testimg - The favorite image list doesn't show the movie posters 
+**Severity:** Low | **Risk:** Low
+
+**Expected Behavior:**
+- The page should display the movies added to the favorite list. 
+
+**Observed Behavior:**
+- Navigate to http://localhost:3001
+- The movies added to favorites doesn't show the poster. 
+
+**Evidence:** [Screenshot](https://prnt.sc/QDrR_kiqQIVx)
 
 ---
 

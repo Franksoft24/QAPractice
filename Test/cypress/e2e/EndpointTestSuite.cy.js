@@ -15,8 +15,10 @@ describe("Health Check Endpoint", () => {
 });
 
 describe("Favorite endpoint Test Suite", () => {
+
   var testData = requestData.RequestData; //Importing test data from fixture
   var endpoint = "favorites";
+
   it("POST /favorites - success", () => {
     var endpoint = "favorites";
     cy.post(backendUrl, endpoint, testData).then((response) => {
@@ -37,9 +39,11 @@ describe("Favorite endpoint Test Suite", () => {
         expect(response.status).to.eq(200); //Expecting status code 200 for successful deletion.
     });
   });
+
 });
 
 describe("Search endpoint Test", () => {
+  
   var testData = requestData.RequestData; //Importing test data from fixture
   var endpoint = "movies/search";
 
@@ -52,6 +56,7 @@ describe("Search endpoint Test", () => {
 });     
 
 describe("Negative Test Cases for Favorite endpoint", () => {
+
   var testData = requestData.RequestData; //Importing test data from fixture
   var endpoint = "favorites";
 
