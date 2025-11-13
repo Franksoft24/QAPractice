@@ -44,7 +44,7 @@ describe("Search endpoint Test", () => {
   var endpoint = "movies/search";
 
   it("GET /movies/search - success", () => {
-    cy.getReq(backendUrl, endpoint, { apikey: requestData.apiKey, s: testData.Title, page: 1 }).then((response) => {
+    cy.getReq(backendUrl, endpoint, { s: testData.Title, page: 1 }).then((response) => {
         expect(response.status).to.eq(200); //Expecting status code 200 for successful search.
     });
   });
