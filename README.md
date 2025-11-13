@@ -111,14 +111,14 @@ A comprehensive QA testing suite for the Movie Search Platform using Cypress for
 
 ## Running Tests
 
-### Run All Tests
+### Run All Tests and create report
 ```bash
 npm run test
 ```
 
 ### Open Cypress Test Runner (Interactive)
 ```bash
-npm run cypress:open
+npm run open
 ```
 
 ### Run Specific Test Suite
