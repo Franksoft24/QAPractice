@@ -4,10 +4,16 @@
   "main": "cypress.config.js",
   "scripts": {
     "test": "npx cypress run",
-    "open": "npx cypress open"
+    "open": "npx cypress open",
+    "testAndReport": "npx cypress run && npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome/mochawesome.json && npx marge cypress/reports/mochawesome/mochawesome.json -f report -o cypress/reports/mochawesome"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "cypress-mochawesome-reporter": "^4.0.2",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.0.0"
+  }
 }
