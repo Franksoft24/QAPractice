@@ -2,3 +2,4 @@ Test/node_modules/
 Test/package-lock.json
 Test/cypress/videos/
 Test/cypress/screenshots/
+Test/cypress/reports/
