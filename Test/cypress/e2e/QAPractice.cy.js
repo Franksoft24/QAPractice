@@ -68,7 +68,7 @@ describe('QA Practice', () => {
     cy.screenshot('Evidences/Load_More/After_Load_More_test') //Take screenshot after loading more
   });
 
-  it.only("Load more shouldn't display work when there are less than 10 movies", () => {
+  it("Load more shouldn't display/work when there are less than 10 movies", () => {
     const initialMovieCount = 10; //Assuming the initial load shows 10 movies
     const movie = testMovies[3];
     cy.log("Movie selected: "+movie); //Log the movie being processed due the amount of movies displayed
