@@ -23,28 +23,34 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.Commands.add('post', (apiUrl, endpoint, data) => {
+Cypress.Commands.add('post', (apiUrl, endpoint, code, data) => {
     cy.request({
         method: 'POST', //Method POST 
         url: apiUrl+"/"+endpoint, //API endpoint
         body: data, //Request body
         failOnStatusCode: false //To handle negative test cases
-    })
+    }).then((response) => {
+        expect(response.status).to.eq(code?? 201); //Expecting status code 201 as default.
+    });
 });
 
-Cypress.Commands.add('getReq', (apiUrl, endpoint, param) => {
+Cypress.Commands.add('getReq', (apiUrl, endpoint, code, param) => {
     cy.request({
         method: 'GET', //Method GET 
         url: apiUrl+"/"+endpoint, //API endpoint
         qs: param, //Query parameters
         failOnStatusCode: false //To handle negative test cases
-    })
+    }).then((response) => {
+        expect(response.status).to.eq(code?? 200); //Expecting status code 200 as default.
+    });
 });
 
-Cypress.Commands.add('delete', (apiUrl, endpoint, param) => {
+Cypress.Commands.add('delete', (apiUrl, endpoint, code, param) => {
     cy.request({
         method: 'Delete', //Method Delete 
         url: apiUrl+"/"+endpoint+"/"+param, //API endpoint
         failOnStatusCode: false //To handle negative test cases
-    })
+    }).then((response) => {
+        expect(response.status).to.eq(code?? 200); //Expecting status code 200 as default.
+    });
 });
