@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "main": "cypress.config.js",
   "scripts": {
-    "test": "npx cypress run",
     "open": "npx cypress open",
-    "testAndReport": "npx cypress run && npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome/mochawesome.json && npx marge cypress/reports/mochawesome/mochawesome.json -f report -o cypress/reports/mochawesome"
+    "test": "npx cypress run && npx mochawesome-merge cypress/reports/mochawesome/*.json > cypress/reports/mochawesome/mochawesome.json && npx marge cypress/reports/mochawesome/mochawesome.json -f report -o cypress/reports/mochawesome"
   },
   "keywords": [],
   "author": "",
